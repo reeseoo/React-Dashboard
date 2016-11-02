@@ -3,9 +3,19 @@ var ReactDOM = require('react-dom');
 
 var HelloWorld = React.createClass({
 
-    render: function(){
+    fetchStuff: function () {
+        fetch('http://hi/apps/HiTicketsApi/api/ticket/7151', {
+            method: 'get'
+        }).then(function (response) {
+
+        }).catch(function (err) { });
+    },
+
+    render: function () {
         return (
             <div>
+
+
                 <select>
                     <option value="A">Apple</option>
                     <option value="B">Banana</option>
@@ -18,6 +28,6 @@ var HelloWorld = React.createClass({
 });
 
 ReactDOM.render(
-    <HelloWorld name="Reese"/>,
+    <HelloWorld name="Reese" />,
     document.getElementById('app')
 )
