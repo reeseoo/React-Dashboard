@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var HelloWorld = React.createClass({
     render: function(){
         return (
-            <div>Another test</div>
+            <div>One last test</div>
         )
     }
 });
