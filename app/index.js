@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var HelloWorld = React.createClass({
     render: function(){
         return (
-            <div>Testing email for git</div>
+            <div>Another test</div>
         )
     }
 });
