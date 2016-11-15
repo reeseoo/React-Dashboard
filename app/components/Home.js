@@ -2,7 +2,7 @@ import React from 'react';
 import Doughnut from 'react-chartjs-2';
 import HiedClient from '../client/hiedClient.js';
 
-export class Home extends React.Component {
+class Home extends React.Component {
 
     //new HiedClient().getCounts(7151)
     //new HiedClient().getCounts(7144)
@@ -12,9 +12,6 @@ export class Home extends React.Component {
     constructor() {
         super();
         this.client = new HiedClient();
-    }
-
-    componentDidMount() {
         console.log("From home " + this.client.getCounts(7151));
     }
 
@@ -60,4 +57,6 @@ export class Home extends React.Component {
             </div>
         )
     }
-}
+};
+
+export default Home;
