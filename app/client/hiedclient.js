@@ -2,7 +2,7 @@ export class HiedClient {
     getCounts() {
         var url = "http://hi/apps/HiTicketsApi/api/getrequestuser/7151";
 
-        fetch(url)
+        return fetch(url)
             .then(
             function (response) {
                 if (response.status !== 200) {
