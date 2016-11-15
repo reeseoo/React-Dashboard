@@ -1,34 +1,47 @@
-var React = require('React');
-import {Doughnut} from 'react-chartjs-2';
+import React from 'react';
+import Doughnut from 'react-chartjs-2';
+import HiedClient from '../client/hiedClient.js';
 
-var Home = React.createClass({
-    chartData:
-         {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+export class Home extends React.Component {
+
+    //new HiedClient().getCounts(7151)
+    //new HiedClient().getCounts(7144)
+    //new HiedClient().getCounts(1116)
+    //new HiedClient().getCounts(7158)
+
+    constructor() {
+        super();
+        this.client = new HiedClient();
+    }
+
+    componentDidMount() {
+        console.log("From home " + this.client.getCounts(7151));
+    }
+
+    chartData() {
+        return new {
+            labels: ["Reese", "Damien", "Chris", "James"],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: [5, 10, 7, 15],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(75, 192, 192, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255,99,132,1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(75, 192, 192, 1)'
                 ],
                 borderWidth: 1
             }]
-    },
+        }
+    }
 
-    chartOptions: function () {
+    chartOptions() {
         return {
             scales: {
                 yAxes: [{
@@ -38,13 +51,13 @@ var Home = React.createClass({
                 }]
             }
         }
-    },
+    }
 
-    render: function () {
+    render() {
         return (
-            <Doughnut data={this.chartData} />
+            <div>
+                <Doughnut data={this.chartData} />
+            </div>
         )
     }
-})
-
-module.exports = Home;
+}
