@@ -15,7 +15,8 @@ class Home extends React.Component {
         this.userThreeCounts = 0;
         this.userFourCounts = 0;
         this.state = {
-            isLoading: true
+            isLoading: true,
+            numberOfCounts: 0
         };
     }
 
