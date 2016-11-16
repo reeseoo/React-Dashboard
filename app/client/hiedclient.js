@@ -1,4 +1,4 @@
-export class HiedClient {
+class HiedClient {
     getCounts(userId) {
         var url = "http://hi/apps/HiTicketsApi/api/count/getmycounts/";
 
@@ -11,7 +11,7 @@ export class HiedClient {
                         response.status);
                     return 0;
                 }
-                
+
                 response.json().then(function (data) {
                     console.log(data);
                     returnData = data;
@@ -24,3 +24,5 @@ export class HiedClient {
             });
     }
 }
+
+export default HiedClient;
