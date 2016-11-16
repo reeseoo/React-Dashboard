@@ -1,6 +1,8 @@
 import React from 'react';
 import Doughnut from 'react-chartjs-2';
 import HiedClient from '../client/hiedClient.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Home extends React.Component {
     constructor() {
@@ -21,9 +23,10 @@ class Home extends React.Component {
         if (this.state.isLoading) {
             this.getChartData();
             this.setAllCounts();
-
             return (
-                <p>Loading Data</p>
+                <MuiThemeProvider>
+                    <CircularProgress size={80} thickness={5} />
+                </MuiThemeProvider>
             )
         } else {
             return (
@@ -49,7 +52,7 @@ class Home extends React.Component {
     setUserTwoCounts() {
         var self = this;
         this.client.getCounts(7144).then(res => {
-             res.json().then(function (data) {
+            res.json().then(function (data) {
                 console.log("userdata = " + data)
                 self.chartData.datasets[0].data.push(data);
                 self.chartData.labels.push('Damien');
@@ -120,7 +123,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div style={{width: '1200px'}}>
+            <div style={{ width: '1200px' }}>
                 {this.start()}
             </div>
         )
