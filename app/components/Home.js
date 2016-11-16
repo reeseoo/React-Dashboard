@@ -26,7 +26,6 @@ class Home extends React.Component {
                 <p>Loading Data</p>
             )
         } else {
-            debugger;
             return (
                 <Doughnut data={this.chartData} />
             )
@@ -78,7 +77,6 @@ class Home extends React.Component {
     setUserFourCounts() {
         var self = this;
         this.client.getCounts(7158).then(res => {
-            debugger;
             res.json().then(function (data) {
                 console.log("userdata = " + data)
                 self.chartData.datasets[0].data.push(data);
