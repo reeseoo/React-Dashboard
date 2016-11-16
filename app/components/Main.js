@@ -10,7 +10,7 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'inline-block', float: 'left', width: '100%' }}>
+            <div style={{ display: 'inline-block', float: 'left', width: '100%', maxWidth:'1187px', margin:'auto'}}>
                 <MuiThemeProvider>
                     <AppBar title="Dashboard" iconClassNameRight="muidocs-icon-navigation-expand-more" />
                 </MuiThemeProvider>

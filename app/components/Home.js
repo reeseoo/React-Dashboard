@@ -10,14 +10,28 @@ class Home extends React.Component {
         this.client = new HiedClient();
         this.apiReposnse = 0;
         this.chartData;
-        this.userOneCounts = 0;
-        this.userTwoCounts = 0;
-        this.userThreeCounts = 0;
-        this.userFourCounts = 0;
         this.state = {
             isLoading: true,
-            numberOfCounts: 0
+            numberOfCounts: 4
         };
+        this.users =
+            [{
+                id: '7151',
+                name: 'Reese'
+            },
+            {
+                id: '7144',
+                name: 'Damien'
+            },
+            {
+                id: '1116',
+                name: 'Chris'
+            },
+            {
+                id: '7158',
+                name: 'James'
+            }];
+
     }
 
     start() {
@@ -36,55 +50,13 @@ class Home extends React.Component {
         }
     }
 
-    setUserOneCounts() {
+    setUserCounts(id, name) {
         var self = this;
-        this.client.getCounts(7151).then(res => {
+        this.client.getCounts(id).then(res => {
             res.json().then(function (data) {
                 console.log("userdata = " + data)
                 self.chartData.datasets[0].data.push(data);
-                self.chartData.labels.push('Reese');
-                self.setState({
-                    isLoading: false
-                });
-            });
-        });
-    }
-
-    setUserTwoCounts() {
-        var self = this;
-        this.client.getCounts(7144).then(res => {
-            res.json().then(function (data) {
-                console.log("userdata = " + data)
-                self.chartData.datasets[0].data.push(data);
-                self.chartData.labels.push('Damien');
-                self.setState({
-                    isLoading: false
-                });
-            });
-        });
-    }
-
-    setUserThreeCounts() {
-        var self = this;
-        this.client.getCounts(1116).then(res => {
-            res.json().then(function (data) {
-                console.log("userdata = " + data)
-                self.chartData.datasets[0].data.push(data);
-                self.chartData.labels.push('Chris');
-                self.setState({
-                    isLoading: false
-                });
-            });
-        });
-    }
-
-    setUserFourCounts() {
-        var self = this;
-        this.client.getCounts(7158).then(res => {
-            res.json().then(function (data) {
-                console.log("userdata = " + data)
-                self.chartData.datasets[0].data.push(data);
-                self.chartData.labels.push('James');
+                self.chartData.labels.push(name);
                 self.setState({
                     isLoading: false
                 });
@@ -93,10 +65,11 @@ class Home extends React.Component {
     }
 
     setAllCounts() {
-        this.userOneCounts = this.setUserOneCounts();
-        this.userTwoCounts = this.setUserTwoCounts();
-        this.userThreeCounts = this.setUserThreeCounts();
-        this.userFourCounts = this.setUserFourCounts();
+        var self = this;
+        this.users.forEach(function (entry) {
+            console.log(entry);
+            self.setUserCounts(entry.id, entry.name)
+        });
     }
 
     getChartData() {
