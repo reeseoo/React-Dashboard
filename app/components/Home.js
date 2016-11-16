@@ -122,7 +122,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{width: '1200px'}}>
                 {this.start()}
             </div>
         )

@@ -8,7 +8,9 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                Hello from main!
+                <div style={{display: 'inline-block', float: 'left'}}>
+                    <input type="button" value="Assigned Counts" />
+                </div>
                 {this.props.children}
             </div>
         )
