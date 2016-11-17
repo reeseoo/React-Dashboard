@@ -98,7 +98,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div style={{ width: '987px' }}>
+            <div style={{ width: '100%' }}>
                 {this.start()}
             </div>
         )

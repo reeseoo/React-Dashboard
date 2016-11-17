@@ -9,7 +9,10 @@ import MenuItem from 'material-ui/MenuItem';
 
 const style = {
     display: 'inline-block',
-    margin: '16px 32px 16px 0'
+    margin: '16px 8px 16px 0',
+    maxWidth: '224px',
+    width: '20%',
+    float: 'left'
 };
 
 class Main extends React.Component {
@@ -31,7 +34,7 @@ class Main extends React.Component {
                         </Menu>
                     </Paper>
                 </MuiThemeProvider>
-                <div style={{ display: 'inline-block', float: 'right', maxWidth: '987px', margin: 'auto' }}>
+                <div style={{ display: 'inline-block', float: 'right', width:'80%', margin: 'auto' }}>
                     {this.props.children}
                 </div>
             </div>
