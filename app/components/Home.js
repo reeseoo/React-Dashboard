@@ -12,7 +12,7 @@ class Home extends React.Component {
         this.chartData;
         this.state = {
             isLoading: true,
-            numberOfCounts: 4
+            numberOfCounts: 0
         };
         this.users =
             [{
@@ -43,7 +43,7 @@ class Home extends React.Component {
                     <CircularProgress size={80} thickness={5} />
                 </MuiThemeProvider>
             )
-        } else {
+        } else if(this.state.numberOfCounts == 4) {
             return (
                 <Doughnut data={this.chartData} />
             )
@@ -58,7 +58,8 @@ class Home extends React.Component {
                 self.chartData.datasets[0].data.push(data);
                 self.chartData.labels.push(name);
                 self.setState({
-                    isLoading: false
+                    isLoading: false,
+                    numberOfCounts: self.state.numberOfCounts + 1
                 });
             });
         });
@@ -97,7 +98,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div style={{ width: '1200px' }}>
+            <div style={{ width: '987px' }}>
                 {this.start()}
             </div>
         )

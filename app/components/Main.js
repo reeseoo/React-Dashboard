@@ -1,7 +1,16 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+
+const style = {
+    display: 'inline-block',
+    margin: '16px 32px 16px 0'
+};
 
 class Main extends React.Component {
     constructor() {
@@ -14,11 +23,17 @@ class Main extends React.Component {
                 <MuiThemeProvider>
                     <AppBar title="Dashboard" iconClassNameRight="muidocs-icon-navigation-expand-more" />
                 </MuiThemeProvider>
-                <ul>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/payments">Payments</Link></li>
-                </ul>
-                {this.props.children}
+                <MuiThemeProvider>
+                    <Paper style={style}> 
+                        <Menu>
+                            <MenuItem primaryText="Home" href="/#/home" />
+                            <MenuItem primaryText="Payments" href="/#/payments" />
+                        </Menu>
+                    </Paper>
+                </MuiThemeProvider>
+                <div style={{ display: 'inline-block', float: 'right', maxWidth: '987px', margin: 'auto' }}>
+                    {this.props.children}
+                </div>
             </div>
         )
     }
