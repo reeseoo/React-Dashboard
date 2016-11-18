@@ -9,10 +9,9 @@ import MenuItem from 'material-ui/MenuItem';
 
 const style = {
     display: 'inline-block',
-    margin: '0px 8px 16px 0',
-    maxWidth: '224px',
-    width: '20%',
-    height: '100%',
+    margin: '0',
+    width: '15%',
+    height: '100vh',
     float: 'left'
 };
 
@@ -23,12 +22,9 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'inline-block', float: 'left', width: '100%', margin: 'auto' }}>
+            <div style={{ display: 'inline-block', float: 'left', width: '100%', margin: 'auto' }}>   
                 <MuiThemeProvider>
-                    <AppBar title="Dashboard" iconClassNameRight="muidocs-icon-navigation-expand-more" />
-                </MuiThemeProvider>
-                <MuiThemeProvider>
-                    <Paper style={style}> 
+                    <Paper style={style}>
                         <Menu>
                             <MenuItem primaryText="Home" href="/#/home" />
                             <MenuItem primaryText="Payments" href="/#/payments" />
@@ -38,8 +34,13 @@ class Main extends React.Component {
                         </Menu>
                     </Paper>
                 </MuiThemeProvider>
-                <div style={{ display: 'inline-block', width:'80%', margin: 'auto' }}>
-                    {this.props.children}
+                <div style={{ display: 'inline-block', float: 'left', width: '85%', marginLeft: '0' }}>
+                    <MuiThemeProvider>
+                        <AppBar title="Dashboard" iconClassNameRight="muidocs-icon-navigation-expand-more" />
+                    </MuiThemeProvider>
+                    <div style={{ display: 'inline-block', width: '80%', margin: 'auto' }}>
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         )
