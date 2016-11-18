@@ -39,11 +39,15 @@ class Ticket extends React.Component {
             this.getChartData();
             this.setAllCounts();
             return (
-                <MuiThemeProvider>
-                    <CircularProgress size={80} thickness={5} />
-                </MuiThemeProvider>
+                <div>
+                    <MuiThemeProvider>
+                        <div style={{ width: '11%', marginLeft: 'auto', marginRight: 'auto', marginTop: '150px' }}>
+                            <CircularProgress size={80} thickness={5} />
+                        </div>
+                    </MuiThemeProvider>
+                </div>
             )
-        } else if(this.state.numberOfCounts == 4) {
+        } else if (this.state.numberOfCounts == 4) {
             return (
                 <Doughnut data={this.chartData} />
             )

@@ -21,14 +21,16 @@ class Payments extends React.Component {
             self.getPaymentValue();
             return (
                 <MuiThemeProvider>
-                    <CircularProgress style={{ margin: '15px', display: 'inline-block' }} size={80} thickness={5} />
+                    <div style={{ width: '11%', marginLeft: 'auto', marginRight: 'auto', marginTop: '150px' }}>
+                        <CircularProgress style={{ margin: '15px', display: 'inline-block' }} size={80} thickness={5} />
+                    </div>
                 </MuiThemeProvider>
             )
         } else {
             this.paymentValue = parseFloat(this.paymentValue);
             return (
                 <div style={{ margin: '15px', display: 'inline-block' }}>
-                    <div style={{ marginBottom: '15px', display: 'inline-block' }}>Amount Processed: {this.paymentCount} </div> <br/>
+                    <div style={{ marginBottom: '15px', display: 'inline-block' }}>Amount Processed: {this.paymentCount} </div> <br />
                     <div style={{ marginBottom: '15px', display: 'inline-block' }}>Value Processed: {this.paymentValue} </div>
                 </div>
             )
@@ -51,7 +53,6 @@ class Payments extends React.Component {
                             self.paymentValue += parseFloat(result[0].Value);
                         }
                     }
-                    //self.paymentValue += entry.AdditionalFields.find(Name == "Amount to be paid").Value;
                 });
                 self.setState({
                     isLoading: false
@@ -59,7 +60,6 @@ class Payments extends React.Component {
             });
         });
     }
-
 
     render() {
         return (

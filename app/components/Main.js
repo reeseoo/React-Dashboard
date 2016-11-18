@@ -12,6 +12,7 @@ const style = {
     margin: '0px 8px 16px 0',
     maxWidth: '224px',
     width: '20%',
+    height: '100%',
     float: 'left'
 };
 
