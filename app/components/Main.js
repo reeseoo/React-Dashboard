@@ -9,7 +9,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 const style = {
     display: 'inline-block',
-    margin: '16px 8px 16px 0',
+    margin: '0px 8px 16px 0',
     maxWidth: '224px',
     width: '20%',
     float: 'left'
@@ -22,7 +22,7 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'inline-block', float: 'left', width: '100%', maxWidth: '1187px', margin: 'auto' }}>
+            <div style={{ display: 'inline-block', float: 'left', width: '100%', margin: 'auto' }}>
                 <MuiThemeProvider>
                     <AppBar title="Dashboard" iconClassNameRight="muidocs-icon-navigation-expand-more" />
                 </MuiThemeProvider>
@@ -31,10 +31,13 @@ class Main extends React.Component {
                         <Menu>
                             <MenuItem primaryText="Home" href="/#/home" />
                             <MenuItem primaryText="Payments" href="/#/payments" />
+                            <MenuItem primaryText="Example One" href="/#/payments" />
+                            <MenuItem primaryText="Example Two" href="/#/payments" />
+                            <MenuItem primaryText="Payments" href="/#/payments" />
                         </Menu>
                     </Paper>
                 </MuiThemeProvider>
-                <div style={{ display: 'inline-block', float: 'right', width:'80%', margin: 'auto' }}>
+                <div style={{ display: 'inline-block', width:'80%', margin: 'auto' }}>
                     {this.props.children}
                 </div>
             </div>
