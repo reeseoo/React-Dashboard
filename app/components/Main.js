@@ -28,7 +28,7 @@ class Main extends React.Component {
                         <Menu>
                             <MenuItem primaryText="Home" href="/#/home" />
                             <MenuItem primaryText="Payments" href="/#/payments" />
-                            <MenuItem primaryText="Example One" href="/#/payments" />
+                            <MenuItem primaryText="Logs" href="/#/logs" />
                             <MenuItem primaryText="Example Two" href="/#/payments" />
                             <MenuItem primaryText="Payments" href="/#/payments" />
                         </Menu>
