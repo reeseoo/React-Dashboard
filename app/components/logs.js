@@ -44,7 +44,23 @@ class Log extends React.Component {
             console.log(this.state.value);
             this.getLogs(this.state.value);
             return (
-                <div>
+                <div style={style}>
+                    <MuiThemeProvider>
+                        <div style={{ width: '200px', margin: 'auto' }}>
+                            <SelectField floatingLabelText="Log Level" value={this.state.value} onChange={this.handleChange}>
+                                <MenuItem value="Information" primaryText="Information" />
+                                <MenuItem value="Warning" primaryText="Warning" />
+                                <MenuItem value="Error" primaryText="Error" />
+                                <MenuItem value="Verbose" primaryText="Verbose" />
+                                <MenuItem value="Fatal" primaryText="Fatal" />
+                            </SelectField>
+                        </div>
+                    </MuiThemeProvider>
+                    <MuiThemeProvider>
+                        <Table>
+                            <TableHeader><TableRow><TableHeaderColumn style={{ width: '10%' }}>Log Level</TableHeaderColumn><TableHeaderColumn>Message</TableHeaderColumn></TableRow></TableHeader>
+                        </Table>
+                    </MuiThemeProvider>
                     <MuiThemeProvider>
                         <div style={{ width: '11%', marginLeft: 'auto', marginRight: 'auto', marginTop: '150px' }}>
                             <CircularProgress size={80} thickness={5} />
@@ -56,7 +72,7 @@ class Log extends React.Component {
             return (
                 <div style={style}>
                     <MuiThemeProvider>
-                        <div style={{ width:'200px', margin: 'auto' }}>
+                        <div style={{ width: '200px', margin: 'auto' }}>
                             <SelectField floatingLabelText="Log Level" value={this.state.value} onChange={this.handleChange}>
                                 <MenuItem value="Information" primaryText="Information" />
                                 <MenuItem value="Warning" primaryText="Warning" />
@@ -78,7 +94,7 @@ class Log extends React.Component {
 
     getLogs(logLevel) {
         var self = this;
-        self.logView.push(<TableHeader><TableRow><TableHeaderColumn style={{width:'10%'}}>Log Level</TableHeaderColumn><TableHeaderColumn>Message</TableHeaderColumn></TableRow></TableHeader>)
+        self.logView.push(<TableHeader><TableRow><TableHeaderColumn style={{ width: '10%' }}>Log Level</TableHeaderColumn><TableHeaderColumn>Message</TableHeaderColumn></TableRow></TableHeader>)
         this.client.getLogs(logLevel).then(res => {
             res.json().then(function (data) {
                 var i = 0;
@@ -104,7 +120,7 @@ class Log extends React.Component {
                     }
 
                     if (i <= 9) {
-                        tempViewData.push(<TableRow> <TableRowColumn style={{width:'10%'}}>{entry.LogLevel}</TableRowColumn> <TableRowColumn>{entry.Message}</TableRowColumn> </TableRow>)
+                        tempViewData.push(<TableRow> <TableRowColumn style={{ width: '10%' }}>{entry.LogLevel}</TableRowColumn> <TableRowColumn>{entry.Message}</TableRowColumn> </TableRow>)
                     }
                     i++;
                 });
