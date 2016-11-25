@@ -4,20 +4,22 @@ import LogClient from '../client/logClient.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
 import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+
 
 const style = {
     marginLeft: '10px',
     marginRight: '10px'
 };
 
-
 class Log extends React.Component {
     constructor() {
         super();
         this.client = new LogClient();
         this.state = {
-            isLoading: true
+            isLoading: true,
+            value: "Information"
         };
         this.logLevels =
             [{
@@ -30,9 +32,17 @@ class Log extends React.Component {
         this.logView = [];
     }
 
+    handleChange = (event, index, value) => {
+        this.setState({
+            value: value,
+            isLoading: true
+        });
+    }
+
     start() {
         if (this.state.isLoading) {
-            this.getLogs("Information");
+            console.log(this.state.value);
+            this.getLogs(this.state.value);
             return (
                 <div>
                     <MuiThemeProvider>
@@ -46,13 +56,17 @@ class Log extends React.Component {
             return (
                 <div style={style}>
                     <MuiThemeProvider>
-                        <SelectField floatingLabelText="Frequency" value={this.state.value} onChange={this.handleChange}>
-                            <MenuItem value="Information" primaryText="Information" />
-                            <MenuItem value="Warning" primaryText="Warning" />
-                            <MenuItem value="Error" primaryText="Error" />
-                            <MenuItem value="Verbose" primaryText="Verbose" />
-                            <MenuItem value="Fatal" primaryText="Fatal" />
-                        </SelectField>
+                        <div style={{ width:'200px', margin: 'auto' }}>
+                            <SelectField floatingLabelText="Log Level" value={this.state.value} onChange={this.handleChange}>
+                                <MenuItem value="Information" primaryText="Information" />
+                                <MenuItem value="Warning" primaryText="Warning" />
+                                <MenuItem value="Error" primaryText="Error" />
+                                <MenuItem value="Verbose" primaryText="Verbose" />
+                                <MenuItem value="Fatal" primaryText="Fatal" />
+                            </SelectField>
+                        </div>
+                    </MuiThemeProvider>
+                    <MuiThemeProvider>
                         <Table>
                             {this.logView}
                         </Table>
@@ -79,14 +93,14 @@ class Log extends React.Component {
                     else if (entry.LogLevel == 1) {
                         entry.LogLevel = "Warning"
                     }
-                    else if (entry.LogLevel = 2) {
-                        entry.LogLevel == "Error"
+                    else if (entry.LogLevel == 2) {
+                        entry.LogLevel = "Error"
                     }
-                    else if (entry.LogLevel = 3) {
-                        entry.LogLevel == "Verbose"
+                    else if (entry.LogLevel == 3) {
+                        entry.LogLevel = "Verbose"
                     }
-                    else if (entry.LogLevel = 4) {
-                        entry.LogLevel == "Fatal"
+                    else if (entry.LogLevel == 4) {
+                        entry.LogLevel = "Fatal"
                     }
 
                     if (i <= 9) {
