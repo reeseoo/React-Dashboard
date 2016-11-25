@@ -78,7 +78,7 @@ class Log extends React.Component {
 
     getLogs(logLevel) {
         var self = this;
-        self.logView.push(<TableHeader><TableRow><TableHeaderColumn>Log Level</TableHeaderColumn><TableHeaderColumn>Message</TableHeaderColumn></TableRow></TableHeader>)
+        self.logView.push(<TableHeader><TableRow><TableHeaderColumn style={{width:'10%'}}>Log Level</TableHeaderColumn><TableHeaderColumn>Message</TableHeaderColumn></TableRow></TableHeader>)
         this.client.getLogs(logLevel).then(res => {
             res.json().then(function (data) {
                 var i = 0;
@@ -104,7 +104,7 @@ class Log extends React.Component {
                     }
 
                     if (i <= 9) {
-                        tempViewData.push(<TableRow> <TableRowColumn>{entry.LogLevel}</TableRowColumn> <TableRowColumn>{entry.Message}</TableRowColumn> </TableRow>)
+                        tempViewData.push(<TableRow> <TableRowColumn style={{width:'10%'}}>{entry.LogLevel}</TableRowColumn> <TableRowColumn>{entry.Message}</TableRowColumn> </TableRow>)
                     }
                     i++;
                 });
