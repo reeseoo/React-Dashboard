@@ -1,5 +1,4 @@
 import React from 'react';
-import Doughnut from 'react-chartjs-2';
 import LogClient from '../client/logClient.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
